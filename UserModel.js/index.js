@@ -6,4 +6,10 @@ module.exports.registerUser = async (name, password, department) =>
 module.exports.getUserByName = async name =>
     await db('users').select().where({ name })
 
-module.exports.getUsers = async () => await db('users')
+module.exports.getUsers = async (department) => {
+    if (department) {
+        return await db('users').where({ department })
+    }
+    return await db('users')
+}
+
