@@ -17,8 +17,10 @@
   },
   "homepage": "https://github.com/Embiggenerd/node-auth3-project#readme",
   "dependencies": {
+    "bcryptjs": "^2.4.3",
     "express": "^4.17.1",
     "helmet": "^3.21.3",
+    "jsonwebtoken": "^8.5.1",
     "knex": "^0.20.10",
     "sqlite3": "^4.1.1"
   }
