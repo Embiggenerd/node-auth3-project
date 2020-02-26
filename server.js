@@ -1,14 +1,14 @@
 const express = require('express')
 const helmet = require("helmet");
 
-const { registerRouter } = require('./routers')
+const { authRouter } = require('./routers')
 
 const server = express()
 
 server.use(helmet());
 server.use(express.json())
 
-server.use('/register', registerRouter)
+server.use('/auth', authRouter)
 
 server.use((err, req, res, next) => {
     console.log(err)

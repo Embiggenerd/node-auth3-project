@@ -1,3 +1,3 @@
 module.exports = {
-    registerRouter: require('./register')
+    authRouter: require('./auth')
 }

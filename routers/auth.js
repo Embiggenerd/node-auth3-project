@@ -1,8 +1,8 @@
-const registerRouter = require('express').Router()
-const { registerUser } = require('../UserModel.js')
+const authRouter = require('express').Router()
+const { registerUser } = require('../UserModel.js/index.js')
 const { hashPassword } = require('../authHelpers')
 
-registerRouter.post('/', async (req, res, next) => {
+authRouter.post('/register', async (req, res, next) => {
     try {
         const { name, password, department } = req.body
         if (!name || !password || !department) {
@@ -11,17 +11,12 @@ registerRouter.post('/', async (req, res, next) => {
             throw dataMissing
         }
 
-
-
         const hashedPassword = hashPassword(password)
-
-        console.log('hashedPasswordRouter', hashedPassword)
 
         const [newUserID] = await registerUser(name, hashedPassword, department)
 
         res.json(newUserID)
         return
-
     } catch (error) {
         next(error)
     }
@@ -29,4 +24,5 @@ registerRouter.post('/', async (req, res, next) => {
 
 
 
-module.exports = registerRouter
+
+module.exports = authRouter
